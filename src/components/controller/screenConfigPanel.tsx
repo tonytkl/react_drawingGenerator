@@ -1,11 +1,15 @@
+import { useEffect } from "react";
 import {
   Screen,
   MediaPlayer,
   Mount,
   RecBox,
   ScreenConfig,
+  Orientation,
+  Installation,
 } from "../../type/screenConfig";
 import { Select } from "../reuseable/select";
+import { Toggle } from "../reuseable/toggle";
 type Props = {
   screens: Screen[];
   mediaPlayers: MediaPlayer[];
@@ -22,6 +26,9 @@ export const ScreenConfigPanel = ({
   selectedConfig,
   setSelectedConfig,
 }: Props) => {
+  useEffect(() => {
+    console.log(selectedConfig);
+  });
   return (
     <div className="border border-gray-400 px-2 py-4 space-y-3">
       <h1 className="text-lg font-bold mb-2">Configuration</h1>
@@ -74,6 +81,24 @@ export const ScreenConfigPanel = ({
             setSelectedConfig(updatedConfig);
           }
         }}
+      />
+      <Toggle
+        values={[Orientation.vertical, Orientation.horizontal]}
+        setValue={(value) =>
+          setSelectedConfig({
+            ...selectedConfig,
+            orientation: value as Orientation,
+          })
+        }
+      />
+      <Toggle
+        values={[Installation.niche, Installation.flatWall]}
+        setValue={(value) =>
+          setSelectedConfig({
+            ...selectedConfig,
+            installation: value as Installation,
+          })
+        }
       />
     </div>
   );
