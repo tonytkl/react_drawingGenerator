@@ -30,7 +30,7 @@ export const ScreenConfigPanel = ({
     console.log(selectedConfig);
   });
   return (
-    <div className="border border-gray-400 px-2 py-4 space-y-3">
+    <div className="border border-gray-400 p-6 space-y-3">
       <h1 className="text-lg font-bold mb-2">Configuration</h1>
       <Select
         label="Screen"

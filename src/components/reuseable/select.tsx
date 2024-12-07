@@ -15,9 +15,9 @@ type Props = {
 export const Select = ({ label, options, value, setValue }: Props) => {
   return (
     <div className="flex-col flex justify-start">
-      <label className="text-sm text-gray-600">{label}</label>
+      <label className="text-xs text-gray-600 mb-1">{label}</label>
       <select
-        className="border border-gray-200 rounded"
+        className="border border-gray-200 rounded text-sm pr-2 pl-1 py-0.5"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       >
