@@ -45,12 +45,12 @@ export type RecBox = {
   depth: number;
 };
 
-enum Orientation {
+export enum Orientation {
   vertical = "vertical",
   horizontal = "horizontal",
 }
 
-enum Installation {
+export enum Installation {
   niche = "niche",
   flatWall = "flat wall",
 }

@@ -32,7 +32,7 @@ export const ScreenConfigPanel = ({
         setValue={(model) => {
           const selected = screens.find((screen) => screen.model === model);
           if (selected) {
-            const updatedConfig = { ...selectedConfig, selected };
+            const updatedConfig = { ...selectedConfig, screen: selected };
             setSelectedConfig(updatedConfig);
           }
         }}
@@ -46,7 +46,7 @@ export const ScreenConfigPanel = ({
             (mediaPlayer) => mediaPlayer.model === model
           );
           if (selected) {
-            const updatedConfig = { ...selectedConfig, selected };
+            const updatedConfig = { ...selectedConfig, mediaPlayer: selected };
             setSelectedConfig(updatedConfig);
           }
         }}
@@ -58,7 +58,7 @@ export const ScreenConfigPanel = ({
         setValue={(model) => {
           const selected = mounts.find((mount) => mount.model === model);
           if (selected) {
-            const updatedConfig = { ...selectedConfig, selected };
+            const updatedConfig = { ...selectedConfig, mount: selected };
             setSelectedConfig(updatedConfig);
           }
         }}
@@ -70,7 +70,7 @@ export const ScreenConfigPanel = ({
         setValue={(model) => {
           const selected = recBoxes.find((recBox) => recBox.model === model);
           if (selected) {
-            const updatedConfig = { ...selectedConfig, selected };
+            const updatedConfig = { ...selectedConfig, recBox: selected };
             setSelectedConfig(updatedConfig);
           }
         }}

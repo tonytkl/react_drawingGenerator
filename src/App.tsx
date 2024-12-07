@@ -17,7 +17,7 @@ import {
   mapRecBox,
 } from "./data/excelReader";
 
-// import generatePDF from "react-to-pdf";
+const FILE_NAME = "data.xlsx";
 
 function App() {
   const [selectedConfig, setSelectedConfig] = useState<ScreenConfig>(
@@ -30,7 +30,7 @@ function App() {
   const [recBoxes, setRecBox] = useState<RecBox[]>([]);
 
   useEffect(() => {
-    readExcel("data.xlsx")
+    readExcel(FILE_NAME)
       .then((data) => {
         setScreen(data.screen.map(mapScreen));
         setMediaPlayer(data.mediaPlayer.map(mapMediaPlayer));
@@ -41,7 +41,6 @@ function App() {
         console.error("Error reading excel file", err);
       });
   }, []);
-
   return (
     <div className="App flex flex-col h-screen min-h-screen ">
       <div className="w-full bg-dark p-2">

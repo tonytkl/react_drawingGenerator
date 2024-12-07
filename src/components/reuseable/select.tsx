@@ -13,7 +13,6 @@ type Props = {
   setValue: (value: string) => void;
 };
 export const Select = ({ label, options, value, setValue }: Props) => {
-  console.log(options);
   return (
     <div className="flex-col flex justify-start">
       <label className="text-sm text-gray-600">{label}</label>
