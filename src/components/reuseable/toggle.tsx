@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+/**
+Custom toggle component
+@params values: values of all toggle options,
+@params setValue: function to set the selected value
+*/
+
 type Props = {
   values: string[];
   setValue: (value: string) => void;
