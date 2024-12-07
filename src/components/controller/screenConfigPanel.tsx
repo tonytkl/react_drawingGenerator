@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   Screen,
   MediaPlayer,
@@ -10,6 +9,18 @@ import {
 } from "../../type/screenConfig";
 import { Select } from "../reuseable/select";
 import { Toggle } from "../reuseable/toggle";
+import { LabelInputLR } from "../reuseable/labelInputLR";
+
+/**
+ * Component for displaying the screen configuration panel.
+ * @param screens - The list of screens.
+ * @param mediaPlayers - The list of media players.
+ * @param mounts - The list of mounts.
+ * @param recBoxes - The list of receptacle boxes.
+ * @param selectedConfig - The selected screen configuration.
+ * @param setSelectedConfig - A function to be called when the screen configuration is changed.
+ */
+
 type Props = {
   screens: Screen[];
   mediaPlayers: MediaPlayer[];
@@ -26,11 +37,8 @@ export const ScreenConfigPanel = ({
   selectedConfig,
   setSelectedConfig,
 }: Props) => {
-  useEffect(() => {
-    console.log(selectedConfig);
-  });
   return (
-    <div className="border border-gray-400 p-6 space-y-3">
+    <div className="border border-gray-400 p-6 space-y-2">
       <h1 className="text-lg font-bold mb-2">Configuration</h1>
       <Select
         label="Screen"
@@ -99,6 +107,30 @@ export const ScreenConfigPanel = ({
             installation: value as Installation,
           })
         }
+      />
+      <LabelInputLR
+        label="Floor Distance"
+        isInput={true}
+        onChange={(value) => {
+          setSelectedConfig({
+            ...selectedConfig,
+            floorDistance: parseFloat(value as string),
+          });
+        }}
+        suffix="inch"
+        type="number"
+      />
+      <LabelInputLR
+        label="Niche Depth Var"
+        isInput={true}
+        onChange={(value) => {
+          setSelectedConfig({
+            ...selectedConfig,
+            depth: parseFloat(value as string),
+          });
+        }}
+        suffix="inch"
+        type="number"
       />
     </div>
   );
