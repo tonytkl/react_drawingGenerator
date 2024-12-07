@@ -1,3 +1,11 @@
+/**
+Custom dropdown component with label
+@params label: value of the label,
+@params options: array of options,
+@params value: value of the selected option,
+@params setValue: function to set the selected value
+*/
+
 type Props = {
   label: string;
   options: string[];
