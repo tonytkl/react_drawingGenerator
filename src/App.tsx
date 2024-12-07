@@ -1,21 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Controller } from "./components/controller/controller";
 import { Drawing } from "./components/drawing/drawing";
-import { ScreenConfig } from "./type/screenConfig";
+import {
+  ScreenConfig,
+  Screen,
+  MediaPlayer,
+  Mount,
+  RecBox,
+} from "./type/screenConfig";
+
+import {
+  readExcel,
+  mapScreen,
+  mapMediaPlayer,
+  mapMount,
+  mapRecBox,
+} from "./data/excelReader";
+
 // import generatePDF from "react-to-pdf";
 
 function App() {
-  // const getTargetElement = (): HTMLElement => {
-  //   const element = document.getElementById("drawing");
-  //   if (!element) {
-  //     throw new Error("Element with id 'drawing' not found");
-  //   }
-  //   return element as HTMLElement;
-  // };
+  const [selectedConfig, setSelectedConfig] = useState<ScreenConfig>(
+    {} as ScreenConfig
+  );
 
-  // const downloadPdf = () => generatePDF(getTargetElement);
+  const [screens, setScreen] = useState<Screen[]>([]);
+  const [mediaPlayers, setMediaPlayer] = useState<MediaPlayer[]>([]);
+  const [mounts, setMount] = useState<Mount[]>([]);
+  const [recBoxes, setRecBox] = useState<RecBox[]>([]);
 
-  const [screenConfig, setConfig] = useState<ScreenConfig>({} as ScreenConfig);
+  useEffect(() => {
+    readExcel("data.xlsx")
+      .then((data) => {
+        setScreen(data.screen.map(mapScreen));
+        setMediaPlayer(data.mediaPlayer.map(mapMediaPlayer));
+        setMount(data.mounts.map(mapMount));
+        setRecBox(data.recBox.map(mapRecBox));
+      })
+      .catch((err) => {
+        console.error("Error reading excel file", err);
+      });
+  }, []);
 
   return (
     <div className="App flex flex-col h-screen min-h-screen ">
@@ -23,7 +48,14 @@ function App() {
         <img src="logo.png" alt="" className="w-24" />
       </div>
       <div className="flex">
-        <Controller />
+        <Controller
+          screens={screens}
+          mediaPlayers={mediaPlayers}
+          mounts={mounts}
+          recBoxes={recBoxes}
+          selectedConfig={selectedConfig}
+          setSelectedConfig={setSelectedConfig}
+        />
         <Drawing />
       </div>
     </div>

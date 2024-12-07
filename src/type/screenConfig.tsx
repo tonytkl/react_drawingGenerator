@@ -9,21 +9,26 @@ export type ScreenConfig = {
   depth: number;
 };
 
-type Screen = {
+export type Screen = {
+  model: string;
   make: string;
   size: number;
+  height: number;
   width: number;
   depth: number;
+  weight: number;
 };
 
-type MediaPlayer = {
+export type MediaPlayer = {
+  model: string;
   make: string;
   height: number;
   width: number;
   depth: number;
 };
 
-type Mount = {
+export type Mount = {
+  model: string;
   brand: string;
   maxLoad: number;
   width: number;
@@ -32,7 +37,8 @@ type Mount = {
   clearance: number;
 };
 
-type RecBox = {
+export type RecBox = {
+  model: string;
   brand: string;
   width: number;
   height: number;

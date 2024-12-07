@@ -1,4 +1,28 @@
-type Props = {};
-export const Select = ({}: Props) => {
-  return <div></div>;
+type Props = {
+  label: string;
+  options: string[];
+  value: string;
+  setValue: (value: string) => void;
+};
+export const Select = ({ label, options, value, setValue }: Props) => {
+  console.log(options);
+  return (
+    <div className="flex-col flex justify-start">
+      <label className="text-sm text-gray-600">{label}</label>
+      <select
+        className="border border-gray-200 rounded"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      >
+        <option value="" disabled selected>
+          Select {label}
+        </option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 };
