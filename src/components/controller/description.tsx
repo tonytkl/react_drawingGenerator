@@ -16,8 +16,8 @@ export const DescriptionInfo = ({
   setDescriptionInfo,
 }: Props) => {
   return (
-    <div className="border border-gray-400 p-6 space-y-2">
-      <h1 className="text-lg font-bold mb-2">Description</h1>
+    <div className="space-y-2 border border-gray-400 p-6">
+      <h1 className="mb-2 text-lg font-bold">Description</h1>
       <Input
         label="Name"
         type="text"

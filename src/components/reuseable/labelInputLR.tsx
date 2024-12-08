@@ -25,12 +25,12 @@ export const LabelInputLR = ({
   suffix,
 }: Props) => {
   return (
-    <div className="w-full flex">
-      <div className="border text-center border-gray-600 bg-gray-300 text-xs p-2 w-1/2">
+    <div className="flex w-full">
+      <div className="w-1/2 border border-gray-600 bg-gray-300 p-2 text-center text-xs">
         {label}
       </div>
       {isInput && onChange ? (
-        <div className="border border-l-0  border-gray-600 p-2 w-1/2 flex">
+        <div className="flex w-1/2 border border-l-0 border-gray-600 p-2">
           <input
             type={type}
             value={value}
@@ -42,10 +42,10 @@ export const LabelInputLR = ({
           {suffix && <div className="w-1/4 text-xs">{suffix}</div>}
         </div>
       ) : (
-        <div className="border border-l-0 text-xs border-gray-600 p-2 w-1/2 flex">
+        <div className="flex w-1/2 border border-l-0 border-gray-600 p-2 text-xs">
           <div
             className={`text-xs ${
-              suffix ? "w-3/4 text-right mr-4" : "w-full text-center"
+              suffix ? "mr-4 w-3/4 text-right" : "w-full text-center"
             }`}
           >
             {value}

@@ -1,6 +1,5 @@
 import { ScreenConfig, Orientation } from "../../type/screenConfig";
 
-
 type Props = {
   selectedConfig: ScreenConfig;
 };
@@ -21,13 +20,13 @@ export const MainDrawing = ({ selectedConfig }: Props) => {
   return (
     <div>
       <div
-        className={`${outerRecDimension} border w-9 border-black absolute`}
+        className={`${outerRecDimension} absolute w-9 border border-black`}
       ></div>
       <div
-        className={`${innerRecDimension} border-4 border-black absolute `}
+        className={`${innerRecDimension} absolute border-4 border-black`}
       ></div>
       <div
-        className={`${dashedRecDimension} border border-dashed border-black absolute `}
+        className={`${dashedRecDimension} absolute border border-dashed border-black`}
       ></div>
     </div>
   );

@@ -38,8 +38,8 @@ export const ScreenConfigPanel = ({
   setSelectedConfig,
 }: Props) => {
   return (
-    <div className="border border-gray-400 p-6 space-y-2">
-      <h1 className="text-lg font-bold mb-2">Configuration</h1>
+    <div className="space-y-2 border border-gray-400 p-6">
+      <h1 className="mb-2 text-lg font-bold">Configuration</h1>
       <Select
         label="Screen"
         options={screens.map((screen) => screen.model)}
@@ -58,7 +58,7 @@ export const ScreenConfigPanel = ({
         value={selectedConfig.mediaPlayer?.model}
         setValue={(model) => {
           const selected = mediaPlayers.find(
-            (mediaPlayer) => mediaPlayer.model === model
+            (mediaPlayer) => mediaPlayer.model === model,
           );
           if (selected) {
             const updatedConfig = { ...selectedConfig, mediaPlayer: selected };

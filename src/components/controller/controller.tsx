@@ -51,7 +51,7 @@ export const Controller = ({
   };
   const downloadPdf = () => generatePDF(getTargetElement);
   return (
-    <div className="flex-col space-y-4 p-4 overflow-y-auto ">
+    <div className="flex-col space-y-4 overflow-y-auto p-4">
       <ScreenConfigPanel
         screens={screens}
         mediaPlayers={mediaPlayers}
@@ -65,7 +65,7 @@ export const Controller = ({
         setDescriptionInfo={setDescriptionInfo}
       />
       <button
-        className="bg-blue-800 text-white p-2 w-full hover:bg-blue-600"
+        className="w-full bg-blue-800 p-2 text-white hover:bg-blue-600"
         onClick={downloadPdf}
       >
         Download PDF
