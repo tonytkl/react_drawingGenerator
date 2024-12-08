@@ -1,4 +1,4 @@
 type Props = {};
 export const Drawing = ({}: Props) => {
-  return <div></div>;
+  return <div id="drawing"></div>;
 };

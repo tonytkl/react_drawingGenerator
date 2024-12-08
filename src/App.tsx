@@ -8,7 +8,6 @@ import {
   Mount,
   RecBox,
 } from "./type/screenConfig";
-
 import {
   readExcel,
   mapScreen,
@@ -16,12 +15,16 @@ import {
   mapMount,
   mapRecBox,
 } from "./data/excelReader";
+import { Description } from "./type/description";
 
 const FILE_NAME = "data.xlsx";
 
 function App() {
   const [selectedConfig, setSelectedConfig] = useState<ScreenConfig>(
     {} as ScreenConfig
+  );
+  const [descriptionInfo, setDescriptionInfo] = useState<Description>(
+    {} as Description
   );
 
   const [screens, setScreen] = useState<Screen[]>([]);
@@ -43,10 +46,10 @@ function App() {
   }, []);
   return (
     <div className="App flex flex-col h-screen min-h-screen ">
-      <div className="w-full bg-dark p-2">
+      <div className="w-full bg-dark p-2 absolute h-12 flex items-center">
         <img src="logo.png" alt="" className="w-24" />
       </div>
-      <div className="flex">
+      <div className="flex pt-12 max-h-screen">
         <Controller
           screens={screens}
           mediaPlayers={mediaPlayers}
@@ -54,6 +57,8 @@ function App() {
           recBoxes={recBoxes}
           selectedConfig={selectedConfig}
           setSelectedConfig={setSelectedConfig}
+          descriptionInfo={descriptionInfo}
+          setDescriptionInfo={setDescriptionInfo}
         />
         <Drawing />
       </div>
