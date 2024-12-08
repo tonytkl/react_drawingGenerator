@@ -50,7 +50,7 @@ export const DescriptionInfo = ({
         label="Date"
         type="date"
         onChange={(text) =>
-          setDescriptionInfo({ ...descriptionInfo, screenSize: text })
+          setDescriptionInfo({ ...descriptionInfo, date: text })
         }
       />
     </div>

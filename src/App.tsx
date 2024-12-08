@@ -21,10 +21,10 @@ const FILE_NAME = "data.xlsx";
 
 function App() {
   const [selectedConfig, setSelectedConfig] = useState<ScreenConfig>(
-    {} as ScreenConfig
+    {} as ScreenConfig,
   );
   const [descriptionInfo, setDescriptionInfo] = useState<Description>(
-    {} as Description
+    {} as Description,
   );
 
   const [screens, setScreen] = useState<Screen[]>([]);
@@ -45,11 +45,11 @@ function App() {
       });
   }, []);
   return (
-    <div className="App flex flex-col h-screen min-h-screen ">
-      <div className="w-full bg-dark p-2 absolute h-12 flex items-center">
+    <div className="App flex h-screen min-h-screen flex-col">
+      <div className="absolute flex h-12 w-full items-center bg-dark p-2">
         <img src="logo.png" alt="" className="w-24" />
       </div>
-      <div className="flex pt-12 max-h-screen">
+      <div className="flex min-h-screen pt-12">
         <Controller
           screens={screens}
           mediaPlayers={mediaPlayers}
@@ -60,7 +60,10 @@ function App() {
           descriptionInfo={descriptionInfo}
           setDescriptionInfo={setDescriptionInfo}
         />
-        <Drawing />
+        <Drawing
+          selectedConfig={selectedConfig}
+          descriptionInfo={descriptionInfo}
+        />
       </div>
     </div>
   );
