@@ -8,7 +8,7 @@ import {
   ScreenConfig,
 } from "../../type/screenConfig";
 import { Description } from "../../type/description";
-import generatePDF from "react-to-pdf";
+import generatePDF, { Margin } from "react-to-pdf";
 
 /**
  * Component to hold the ScreenConfigPanel and DescriptionInfo and download button
@@ -32,6 +32,7 @@ type Props = {
   descriptionInfo: Description;
   setDescriptionInfo: (description: Description) => void;
 };
+
 export const Controller = ({
   screens,
   mediaPlayers,
@@ -42,6 +43,7 @@ export const Controller = ({
   descriptionInfo,
   setDescriptionInfo,
 }: Props) => {
+  // Get HTML element to download PDF
   const getTargetElement = (): HTMLElement => {
     const element = document.getElementById("drawing");
     if (!element) {
@@ -49,9 +51,18 @@ export const Controller = ({
     }
     return element as HTMLElement;
   };
-  const downloadPdf = () => generatePDF(getTargetElement);
+
+  const options = {
+    filename: `${descriptionInfo.title}.pdf`,
+    page: {
+      orientation: "landscape" as "landscape",
+      margin: Margin.MEDIUM,
+    },
+  };
+
+  const downloadPdf = () => generatePDF(getTargetElement, options);
   return (
-    <div className="flex-col space-y-4 overflow-y-auto p-4">
+    <div className="flex-col space-y-4 overflow-y-auto p-4 lg:w-1/5">
       <ScreenConfigPanel
         screens={screens}
         mediaPlayers={mediaPlayers}
@@ -65,7 +76,7 @@ export const Controller = ({
         setDescriptionInfo={setDescriptionInfo}
       />
       <button
-        className="w-full bg-blue-800 p-2 text-white hover:bg-blue-600"
+        className="w-full bg-highlight p-2 text-white transition-all hover:bg-orange-700"
         onClick={downloadPdf}
       >
         Download PDF

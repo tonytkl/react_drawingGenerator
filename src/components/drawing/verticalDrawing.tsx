@@ -22,7 +22,7 @@ export const VerticalDrawing = ({ selectedConfig }: Props) => {
   const dimensionLength = 50;
 
   return (
-    <Stage width={980} height={950}>
+    <Stage width={1200} height={950}>
       <Layer>
         {/* Screen */}
         <Rect

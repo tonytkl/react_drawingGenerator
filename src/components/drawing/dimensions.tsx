@@ -12,8 +12,8 @@ type Props = {
 };
 export const Dimensions = ({ label, dimensionPairs }: Props) => {
   return (
-    <div className="border border-gray-400 p-6">
-      <h1 className="mb-4 text-2xl font-bold">{label}</h1>
+    <div className="w-full border border-gray-400 p-6">
+      <h1 className="mb-4 text-xl font-bold">{label}</h1>
       <div className="flex-col space-y-2">
         {dimensionPairs.map((dimensionPair, index) => (
           <LabelInputLR

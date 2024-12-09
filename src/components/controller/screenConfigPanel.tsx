@@ -38,8 +38,8 @@ export const ScreenConfigPanel = ({
   setSelectedConfig,
 }: Props) => {
   return (
-    <div className="space-y-2 border border-gray-400 p-6">
-      <h1 className="mb-2 text-lg font-bold">Configuration</h1>
+    <div className="space-y-4 border border-gray-400 px-6 py-10">
+      <h1 className="mb-2 text-xl font-bold">Configuration</h1>
       <Select
         label="Screen"
         options={screens.map((screen) => screen.model)}
@@ -117,7 +117,7 @@ export const ScreenConfigPanel = ({
             floorDistance: parseFloat(value as string),
           });
         }}
-        suffix="inch"
+        suffix="in"
         type="number"
       />
       <LabelInputLR
@@ -129,7 +129,7 @@ export const ScreenConfigPanel = ({
             depth: parseFloat(value as string),
           });
         }}
-        suffix="inch"
+        suffix="in"
         type="number"
       />
     </div>

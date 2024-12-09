@@ -27,7 +27,7 @@ export const Drawing = ({ selectedConfig, descriptionInfo }: Props) => {
       ) : (
         <VerticalDrawing selectedConfig={selectedConfig} />
       )}
-      <div className="flex flex-col space-y-10">
+      <div className="w-1/3 flex flex-col space-y-10">
         <div className="flex space-x-6">
           <Dimensions
             label="Niche Dimensions:"

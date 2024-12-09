@@ -21,13 +21,17 @@ import { Description } from "./type/description";
 const FILE_NAME = "data.xlsx";
 
 function App() {
+  // State to store the selected configuration
   const [selectedConfig, setSelectedConfig] = useState<ScreenConfig>({
     orientation: Orientation.horizontal,
   } as ScreenConfig);
+
+  // State to store the description information
   const [descriptionInfo, setDescriptionInfo] = useState<Description>(
     {} as Description,
   );
 
+  // State hold data from excel file
   const [screens, setScreen] = useState<Screen[]>([]);
   const [mediaPlayers, setMediaPlayer] = useState<MediaPlayer[]>([]);
   const [mounts, setMount] = useState<Mount[]>([]);
