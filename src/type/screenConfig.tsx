@@ -5,6 +5,7 @@ export type ScreenConfig = {
   recBox: RecBox;
   orientation: Orientation;
   installation: Installation;
+  screenGap: number;
   floorDistance: number;
   depth: number;
 };

@@ -109,8 +109,22 @@ export const ScreenConfigPanel = ({
         }
       />
       <LabelInputLR
+        label="Screen Gap"
+        isInput={true}
+        value={selectedConfig.screenGap}
+        onChange={(value) => {
+          setSelectedConfig({
+            ...selectedConfig,
+            screenGap: parseFloat(value as string),
+          });
+        }}
+        suffix="in"
+        type="number"
+      />
+      <LabelInputLR
         label="Floor Distance"
         isInput={true}
+        value={selectedConfig.floorDistance}
         onChange={(value) => {
           setSelectedConfig({
             ...selectedConfig,
@@ -123,6 +137,7 @@ export const ScreenConfigPanel = ({
       <LabelInputLR
         label="Niche Depth Var"
         isInput={true}
+        value={selectedConfig.depth}
         onChange={(value) => {
           setSelectedConfig({
             ...selectedConfig,

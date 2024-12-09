@@ -5,15 +5,15 @@ type Props = {
   selectedConfig: ScreenConfig;
 };
 export const HorizontalDrawing = ({ selectedConfig }: Props) => {
-  const screenWidth = 500;
-  const screenHeight = 350;
-  const screenX = 240;
-  const screenY = 160;
+  const extScreenWidth = 500;
+  const extScreenHeight = 350;
+  const extScreenX = 240;
+  const extScreenY = 160;
 
-  const mountWidth = screenWidth - 40;
-  const mountHeight = screenHeight - 40;
-  const mountX = screenX + 20;
-  const mountY = screenY + 20;
+  const screenWidth = extScreenWidth - 40;
+  const screenHeight = extScreenHeight - 40;
+  const screenX = extScreenX + 20;
+  const screenY = extScreenY + 20;
 
   const axisOffset = 80;
   const dimensionOffset = 5;
@@ -26,39 +26,39 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
       <Layer>
         {/* Screen */}
         <Rect
-          width={screenWidth}
-          height={screenHeight}
+          width={extScreenWidth}
+          height={extScreenHeight}
           stroke={"black"}
           strokeWidth={1}
-          x={screenX}
-          y={screenY}
+          x={extScreenX}
+          y={extScreenY}
         />
         {/* Mount */}
         <Rect
-          width={mountWidth}
-          height={mountHeight}
+          width={screenWidth}
+          height={screenHeight}
           stroke={"black"}
           strokeWidth={5}
-          x={mountX}
-          y={mountY}
+          x={screenX}
+          y={screenY}
         />
         {/* Inner Rectangle */}
         <Rect
-          width={screenWidth - 120}
-          height={screenHeight - 120}
+          width={extScreenWidth - 120}
+          height={extScreenHeight - 120}
           stroke={"black"}
           strokeWidth={1}
           dash={[20, 20]}
-          x={screenX + 60}
-          y={screenY + 60}
+          x={extScreenX + 60}
+          y={extScreenY + 60}
         />
         {/* Y axis */}
         <Line
           points={[
             490,
-            screenHeight + screenY + axisOffset,
+            extScreenHeight + extScreenY + axisOffset,
             490,
-            screenY - axisOffset,
+            extScreenY - axisOffset,
           ]}
           stroke={"gray"}
           strokeWidth={1}
@@ -67,10 +67,10 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
         {/* X axis */}
         <Line
           points={[
-            screenWidth + screenX + axisOffset,
-            screenY + screenHeight / 2,
-            screenX - axisOffset - 50,
-            screenY + screenHeight / 2,
+            extScreenWidth + extScreenX + axisOffset,
+            extScreenY + extScreenHeight / 2,
+            extScreenX - axisOffset - 50,
+            extScreenY + extScreenHeight / 2,
           ]}
           stroke={"gray"}
           strokeWidth={1}
@@ -82,9 +82,103 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
             {/* Screen height */}
             <Line
               points={[
-                screenX - dimensionOffset,
+                extScreenX - dimensionOffset,
+                extScreenY,
+                extScreenX - dimensionOffset - dimensionLength,
+                extScreenY,
+              ]}
+              stroke={"black"}
+              strokeWidth={1}
+            />
+            <Line
+              points={[
+                extScreenX - dimensionOffset,
+                extScreenY + extScreenHeight,
+                extScreenX - dimensionOffset - dimensionLength,
+                extScreenY + extScreenHeight,
+              ]}
+              stroke={"black"}
+              strokeWidth={1}
+            />
+            <Arrow
+              points={[
+                extScreenX - dimensionLength,
+                extScreenY + dimensionOffset,
+                extScreenX - dimensionLength,
+                extScreenY + extScreenHeight - dimensionOffset,
+              ]}
+              stroke={"black"}
+              strokeWidth={1}
+              pointerAtBeginning={true}
+              fill={"black"}
+            />
+            <Text
+              text={
+                selectedConfig.screen
+                  ? (
+                      selectedConfig.screen?.height +
+                      selectedConfig.screenGap * 2
+                    ).toString() + '"'
+                  : ""
+              }
+              x={extScreenX - dimensionOffset - dimensionLength - 70}
+              y={extScreenY + extScreenHeight / 2 - 40}
+              fontSize={20}
+              fontStyle="bold"
+            />
+            {/* Screen width */}
+            <Line
+              points={[
+                extScreenX,
+                extScreenY - dimensionOffset,
+                extScreenX,
+                extScreenY - dimensionOffset - dimensionLength,
+              ]}
+              stroke={"black"}
+              strokeWidth={1}
+            />
+            <Line
+              points={[
+                extScreenX + extScreenWidth,
+                extScreenY - dimensionOffset,
+                extScreenX + extScreenWidth,
+                extScreenY - dimensionOffset - dimensionLength,
+              ]}
+              stroke={"black"}
+              strokeWidth={1}
+            />
+            <Arrow
+              points={[
+                extScreenX,
+                extScreenY - dimensionLength + dimensionOffset,
+                extScreenX + extScreenWidth,
+                extScreenY - dimensionLength + dimensionOffset,
+              ]}
+              stroke={"black"}
+              strokeWidth={1}
+              pointerAtBeginning={true}
+              fill={"black"}
+            />
+            <Text
+              text={
+                selectedConfig.screen
+                  ? (
+                      selectedConfig.screen?.width +
+                      selectedConfig.screenGap * 2
+                    ).toString() + '"'
+                  : ""
+              }
+              x={extScreenX + extScreenWidth / 2 + 20}
+              y={extScreenY - dimensionLength - 20}
+              fontSize={20}
+              fontStyle="bold"
+            />
+            {/* Inner screen height */}
+            <Line
+              points={[
+                extScreenX + extScreenWidth + dimensionOffset,
                 screenY,
-                screenX - dimensionOffset - dimensionLength,
+                extScreenX + extScreenWidth + dimensionOffset + dimensionLength,
                 screenY,
               ]}
               stroke={"black"}
@@ -92,9 +186,9 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
             />
             <Line
               points={[
-                screenX - dimensionOffset,
+                extScreenX + extScreenWidth + dimensionOffset,
                 screenY + screenHeight,
-                screenX - dimensionOffset - dimensionLength,
+                extScreenX + extScreenWidth + dimensionOffset + dimensionLength,
                 screenY + screenHeight,
               ]}
               stroke={"black"}
@@ -102,9 +196,9 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
             />
             <Arrow
               points={[
-                screenX - dimensionLength,
+                extScreenX + extScreenWidth + dimensionLength,
                 screenY + dimensionOffset,
-                screenX - dimensionLength,
+                extScreenX + extScreenWidth + dimensionLength,
                 screenY + screenHeight - dimensionOffset,
               ]}
               stroke={"black"}
@@ -118,18 +212,21 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
                   ? selectedConfig.screen?.height.toString() + '"'
                   : ""
               }
-              x={screenX - dimensionOffset - dimensionLength - 70}
-              y={screenY + screenHeight / 2 - 40}
+              x={extScreenX + extScreenWidth + dimensionLength + 20}
+              y={extScreenY + extScreenHeight / 2 - 40}
               fontSize={20}
               fontStyle="bold"
             />
-            {/* Screen width */}
+            {/* Inner screen width */}
             <Line
               points={[
                 screenX,
-                screenY - dimensionOffset,
+                extScreenY + extScreenHeight + dimensionOffset,
                 screenX,
-                screenY - dimensionOffset - dimensionLength,
+                extScreenY +
+                  extScreenHeight +
+                  dimensionOffset +
+                  dimensionLength,
               ]}
               stroke={"black"}
               strokeWidth={1}
@@ -137,9 +234,12 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
             <Line
               points={[
                 screenX + screenWidth,
-                screenY - dimensionOffset,
+                extScreenY + extScreenHeight + dimensionOffset,
                 screenX + screenWidth,
-                screenY - dimensionOffset - dimensionLength,
+                extScreenY +
+                  extScreenHeight +
+                  dimensionOffset +
+                  dimensionLength,
               ]}
               stroke={"black"}
               strokeWidth={1}
@@ -147,9 +247,15 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
             <Arrow
               points={[
                 screenX,
-                screenY - dimensionLength + dimensionOffset,
+                extScreenY +
+                  extScreenHeight +
+                  dimensionLength -
+                  dimensionOffset,
                 screenX + screenWidth,
-                screenY - dimensionLength + dimensionOffset,
+                extScreenY +
+                  extScreenHeight +
+                  dimensionLength -
+                  dimensionOffset,
               ]}
               stroke={"black"}
               strokeWidth={1}
@@ -162,126 +268,33 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
                   ? selectedConfig.screen?.width.toString() + '"'
                   : ""
               }
-              x={screenX + screenWidth / 2 + 20}
-              y={screenY - dimensionLength - 20}
+              x={extScreenX + extScreenWidth / 2 + 20}
+              y={extScreenY + extScreenHeight + dimensionLength + 10}
               fontSize={20}
               fontStyle="bold"
             />
           </Group>
         )}
-        {/* Mount Dimension */}
-        {selectedConfig.mount && (
-          <Group>
-            {/* Mount height */}
-            <Line
-              points={[
-                screenX + screenWidth + dimensionOffset,
-                mountY,
-                screenX + screenWidth + dimensionOffset + dimensionLength,
-                mountY,
-              ]}
-              stroke={"black"}
-              strokeWidth={1}
-            />
-            <Line
-              points={[
-                screenX + screenWidth + dimensionOffset,
-                mountY + mountHeight,
-                screenX + screenWidth + dimensionOffset + dimensionLength,
-                mountY + mountHeight,
-              ]}
-              stroke={"black"}
-              strokeWidth={1}
-            />
-            <Arrow
-              points={[
-                screenX + screenWidth + dimensionLength,
-                mountY + dimensionOffset,
-                screenX + screenWidth + dimensionLength,
-                mountY + mountHeight - dimensionOffset,
-              ]}
-              stroke={"black"}
-              strokeWidth={1}
-              pointerAtBeginning={true}
-              fill={"black"}
-            />
-            <Text
-              text={
-                selectedConfig.mount
-                  ? selectedConfig.mount?.height.toString() + '"'
-                  : ""
-              }
-              x={screenX + screenWidth + dimensionLength + 20}
-              y={screenY + screenHeight / 2 - 40}
-              fontSize={20}
-              fontStyle="bold"
-            />
 
-            {/* Mount width */}
-            <Line
-              points={[
-                mountX,
-                screenY + screenHeight + dimensionOffset,
-                mountX,
-                screenY + screenHeight + dimensionOffset + dimensionLength,
-              ]}
-              stroke={"black"}
-              strokeWidth={1}
-            />
-            <Line
-              points={[
-                mountX + mountWidth,
-                screenY + screenHeight + dimensionOffset,
-                mountX + mountWidth,
-                screenY + screenHeight + dimensionOffset + dimensionLength,
-              ]}
-              stroke={"black"}
-              strokeWidth={1}
-            />
-            <Arrow
-              points={[
-                mountX,
-                screenY + screenHeight + dimensionLength - dimensionOffset,
-                mountX + mountWidth,
-                screenY + screenHeight + dimensionLength - dimensionOffset,
-              ]}
-              stroke={"black"}
-              strokeWidth={1}
-              pointerAtBeginning={true}
-              fill={"black"}
-            />
-            <Text
-              text={
-                selectedConfig.mount
-                  ? selectedConfig.mount?.width.toString() + '"'
-                  : ""
-              }
-              x={screenX + screenWidth / 2 + 20}
-              y={screenY + screenHeight + dimensionLength + 10}
-              fontSize={20}
-              fontStyle="bold"
-            />
-          </Group>
-        )}
         {/* Floor line */}
         {selectedConfig.floorDistance && (
           <Group>
             <Line
               points={[
-                screenX - 120,
-                screenY + screenHeight + 300,
-                screenX + screenWidth + 100,
-                screenY + screenHeight + 300,
+                extScreenX - 120,
+                extScreenY + extScreenHeight + 300,
+                extScreenX + extScreenWidth + 100,
+                extScreenY + extScreenHeight + 300,
               ]}
               stroke={"black"}
               strokeWidth={1}
             />
             <Arrow
               points={[
-                screenX - groundDimensionOffset,
-                screenY + screenHeight / 2,
-                screenX - groundDimensionOffset,
-                screenY + screenHeight + 300,
+                extScreenX - groundDimensionOffset,
+                extScreenY + extScreenHeight / 2,
+                extScreenX - groundDimensionOffset,
+                extScreenY + extScreenHeight + 300,
               ]}
               stroke={"black"}
               strokeWidth={1}
@@ -296,8 +309,8 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
                     "\nFloor\nDistance"
                   : ""
               }
-              x={screenX - groundDimensionOffset - 100}
-              y={screenY + screenHeight + dimensionLength + 10}
+              x={extScreenX - groundDimensionOffset - 100}
+              y={extScreenY + extScreenHeight + dimensionLength + 10}
               fontSize={20}
               fontStyle="bold"
               align="right"

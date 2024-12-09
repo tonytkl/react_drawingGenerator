@@ -23,7 +23,11 @@ const FILE_NAME = "data.xlsx";
 function App() {
   // State to store the selected configuration
   const [selectedConfig, setSelectedConfig] = useState<ScreenConfig>({
+    // Default configuration
     orientation: Orientation.horizontal,
+    screenGap: 0.5,
+    floorDistance: 50,
+    depth: 0.5,
   } as ScreenConfig);
 
   // State to store the description information

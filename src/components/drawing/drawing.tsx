@@ -27,24 +27,34 @@ export const Drawing = ({ selectedConfig, descriptionInfo }: Props) => {
       ) : (
         <VerticalDrawing selectedConfig={selectedConfig} />
       )}
-      <div className="w-1/3 flex flex-col space-y-10">
+      <div className="flex w-1/3 flex-col space-y-10">
         <div className="flex space-x-6">
           <Dimensions
             label="Niche Dimensions:"
             dimensionPairs={[
               {
                 label: "Height",
-                value: selectedConfig.mount?.height,
+                value:
+                  selectedConfig.screen?.height +
+                  (2 * selectedConfig.screenGap || 0),
                 suffix: "in",
               },
               {
                 label: "Width",
-                value: selectedConfig.mount?.width,
+                value:
+                  selectedConfig.screen?.width +
+                  (2 * selectedConfig.screenGap || 0),
                 suffix: "in",
               },
               {
                 label: "Depth",
-                value: selectedConfig.mount?.depth,
+                value:
+                  selectedConfig.screen?.depth +
+                  Math.max(
+                    selectedConfig.mediaPlayer?.depth || 0,
+                    selectedConfig.mount?.depth || 0,
+                  ) +
+                  selectedConfig.depth,
                 suffix: "in",
               },
             ]}

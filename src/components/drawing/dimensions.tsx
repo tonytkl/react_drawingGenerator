@@ -20,7 +20,12 @@ export const Dimensions = ({ label, dimensionPairs }: Props) => {
             key={index}
             label={dimensionPair.label}
             isInput={false}
-            value={dimensionPair.value}
+            value={
+              typeof dimensionPair.value === "number" &&
+              isNaN(dimensionPair.value)
+                ? ""
+                : dimensionPair.value
+            }
             suffix={dimensionPair.suffix}
           />
         ))}
