@@ -1,3 +1,4 @@
+// Custom type for holding data of the screen configuration.
 export type ScreenConfig = {
   screen: Screen;
   mediaPlayer: MediaPlayer;

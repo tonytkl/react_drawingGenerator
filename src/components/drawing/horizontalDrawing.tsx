@@ -1,10 +1,16 @@
 import { Stage, Layer, Rect, Arrow, Line, Text, Group } from "react-konva";
 import { ScreenConfig } from "../../type/screenConfig";
 
+/**
+ * Custom component for displaying the horizontal drawing.
+ * @param selectedConfig - The selected configuration of the screen.
+ */
+
 type Props = {
   selectedConfig: ScreenConfig;
 };
 export const HorizontalDrawing = ({ selectedConfig }: Props) => {
+  // All the dimensions are based on the screen of 1920 x 1080
   const extScreenWidth = 450;
   const extScreenHeight = 300;
   const extScreenX = 240;
@@ -22,6 +28,7 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
   const dimensionLength = 50;
 
   return (
+    // Stage size is based on the screen of 1920 x 1080
     <Stage width={980} height={800}>
       <Layer>
         {/* Screen */}

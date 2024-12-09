@@ -8,11 +8,19 @@ import { TitleBlock } from "./titleBlock";
 
 import { Orientation } from "../../type/screenConfig";
 
+/**
+ * Custom component for displaying the drawing.
+ * The drawing component will based on the orientation of the screen.
+ * @param selectedConfig - The selected configuration of the screen.
+ * @param descriptionInfo - The description information of the screen.
+ */
+
 type Props = {
   selectedConfig: ScreenConfig;
   descriptionInfo: Description;
 };
 
+// Custom notes for the drawing.
 const NOTES = [
   "Install recessed receptacle box with:",
   "2x Terminated Power Outlets",

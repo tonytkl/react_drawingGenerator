@@ -1,5 +1,10 @@
 import { Description } from "../../type/description";
 
+/**
+ * Custom component for displaying the title block of the drawing.
+ * @param descriptionInfo - The description information of the screen.
+ */
+
 type Props = {
   descriptionInfo: Description;
 };

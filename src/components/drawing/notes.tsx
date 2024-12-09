@@ -1,5 +1,11 @@
 import { LabelInputLR } from "../reuseable/labelInputLR";
 
+/**
+ * Custom component for displaying notes of drawing.
+ * @param notes - An array of notes to be displayed.
+ * @param dimensionPairs - An array of dimension pairs to be displayed.
+ */
+
 type Props = {
   notes: string[];
   dimensionPairs: { label: string; value: string | number; suffix: string }[];
