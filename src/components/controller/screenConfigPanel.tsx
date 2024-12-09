@@ -91,7 +91,7 @@ export const ScreenConfigPanel = ({
         }}
       />
       <Toggle
-        values={[Orientation.vertical, Orientation.horizontal]}
+        values={[Orientation.horizontal, Orientation.vertical]}
         setValue={(value) =>
           setSelectedConfig({
             ...selectedConfig,

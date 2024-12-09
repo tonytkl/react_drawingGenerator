@@ -1,9 +1,12 @@
 import { ScreenConfig } from "../../type/screenConfig";
 import { Description } from "../../type/description";
-import { MainDrawing } from "./mainDrawing";
+import { HorizontalDrawing } from "./horizontalDrawing";
+import { VerticalDrawing } from "./verticalDrawing";
 import { Dimensions } from "./dimensions";
 import { Notes } from "./notes";
 import { TitleBlock } from "./titleBlock";
+
+import { Orientation } from "../../type/screenConfig";
 
 type Props = {
   selectedConfig: ScreenConfig;
@@ -19,7 +22,11 @@ const NOTES = [
 export const Drawing = ({ selectedConfig, descriptionInfo }: Props) => {
   return (
     <div id="drawing" className="flex w-full justify-end p-10">
-      <MainDrawing selectedConfig={selectedConfig} />
+      {selectedConfig.orientation === Orientation.horizontal ? (
+        <HorizontalDrawing selectedConfig={selectedConfig} />
+      ) : (
+        <VerticalDrawing selectedConfig={selectedConfig} />
+      )}
       <div className="flex flex-col space-y-10">
         <div className="flex space-x-6">
           <Dimensions

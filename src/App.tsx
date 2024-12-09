@@ -7,6 +7,7 @@ import {
   MediaPlayer,
   Mount,
   RecBox,
+  Orientation,
 } from "./type/screenConfig";
 import {
   readExcel,
@@ -20,9 +21,9 @@ import { Description } from "./type/description";
 const FILE_NAME = "data.xlsx";
 
 function App() {
-  const [selectedConfig, setSelectedConfig] = useState<ScreenConfig>(
-    {} as ScreenConfig,
-  );
+  const [selectedConfig, setSelectedConfig] = useState<ScreenConfig>({
+    orientation: Orientation.horizontal,
+  } as ScreenConfig);
   const [descriptionInfo, setDescriptionInfo] = useState<Description>(
     {} as Description,
   );

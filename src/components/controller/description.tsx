@@ -19,7 +19,7 @@ export const DescriptionInfo = ({
     <div className="space-y-2 border border-gray-400 p-6">
       <h1 className="mb-2 text-lg font-bold">Description</h1>
       <Input
-        label="Name"
+        label="Title"
         type="text"
         onChange={(text) =>
           setDescriptionInfo({ ...descriptionInfo, title: text })
