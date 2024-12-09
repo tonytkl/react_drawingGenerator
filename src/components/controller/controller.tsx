@@ -62,7 +62,7 @@ export const Controller = ({
 
   const downloadPdf = () => generatePDF(getTargetElement, options);
   return (
-    <div className="flex-col space-y-4 overflow-y-auto p-4 lg:w-1/5">
+    <div className="flex-col space-y-4 overflow-y-auto p-4">
       <ScreenConfigPanel
         screens={screens}
         mediaPlayers={mediaPlayers}

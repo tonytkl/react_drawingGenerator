@@ -5,8 +5,8 @@ type Props = {
   selectedConfig: ScreenConfig;
 };
 export const HorizontalDrawing = ({ selectedConfig }: Props) => {
-  const extScreenWidth = 500;
-  const extScreenHeight = 350;
+  const extScreenWidth = 450;
+  const extScreenHeight = 300;
   const extScreenX = 240;
   const extScreenY = 160;
 
@@ -22,7 +22,7 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
   const dimensionLength = 50;
 
   return (
-    <Stage width={1200} height={950}>
+    <Stage width={980} height={800}>
       <Layer>
         {/* Screen */}
         <Rect
@@ -55,9 +55,9 @@ export const HorizontalDrawing = ({ selectedConfig }: Props) => {
         {/* Y axis */}
         <Line
           points={[
-            490,
+            extScreenWidth / 2 + extScreenX,
             extScreenHeight + extScreenY + axisOffset,
-            490,
+            extScreenWidth / 2 + extScreenX,
             extScreenY - axisOffset,
           ]}
           stroke={"gray"}

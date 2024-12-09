@@ -26,7 +26,7 @@ export const LabelInputLR = ({
 }: Props) => {
   return (
     <div className="flex w-full">
-      <div className="w-1/2 border border-gray-600 bg-gray-300 p-2 text-center text-sm">
+      <div className="w-1/2 border border-gray-600 bg-gray-300 p-2 text-center text-xs">
         {label}
       </div>
       {isInput && onChange ? (
@@ -34,23 +34,23 @@ export const LabelInputLR = ({
           <input
             type={type}
             value={value}
-            className={`text-sm ${
+            className={`text-xs ${
               suffix ? "w-3/4 text-right" : "w-full text-center"
             }`}
             onChange={(e) => onChange(e.target.value)}
           />
-          {suffix && <div className="w-1/4 text-sm">{suffix}</div>}
+          {suffix && <div className="w-1/4 text-xs">{suffix}</div>}
         </div>
       ) : (
         <div className="flex w-1/2 border border-l-0 border-gray-600 p-2 text-sm">
           <div
-            className={`text-sm ${
+            className={`text-xs ${
               suffix ? "mr-4 w-3/4 text-right" : "w-full text-center"
             }`}
           >
-            {value}
+            {typeof value === "number" ? value.toFixed(2) : value}
           </div>
-          {suffix && <div className="w-1/4 text-sm">{suffix}</div>}
+          {suffix && <div className="w-1/4 text-xs">{suffix}</div>}
         </div>
       )}
     </div>

@@ -13,9 +13,9 @@ type Props = {
 export const Input = ({ label, type, onChange }: Props) => {
   return (
     <div className="flex flex-col justify-start">
-      <label className="mb-1 text-sm text-gray-600">{label}</label>
+      <label className="mb-1 text-xs text-gray-600">{label}</label>
       <input
-        className="rounded border border-gray-200 py-0.5 pl-1 pr-2"
+        className="rounded border border-gray-400 py-0.5 pl-1 pr-2 text-sm"
         type={type}
         onChange={(e) => onChange(e.target.value)}
       />

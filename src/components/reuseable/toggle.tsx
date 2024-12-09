@@ -23,7 +23,7 @@ export const Toggle = ({ values, setValue }: Props) => {
           key={value}
           className={`${
             selected === value ? selectedStyle : unselectedStyle
-          } w-1/2 border border-gray-600 p-2 text-sm transition-all duration-300`}
+          } w-1/2 border border-gray-600 p-2 text-xs transition-all duration-300`}
           onClick={() => {
             setValue(value);
             setSelected(value);
