@@ -31,9 +31,9 @@ const Home = () => {
   } as ScreenConfig);
 
   // State to store the description information
-  const [descriptionInfo, setDescriptionInfo] = useState<Description>(
-    {} as Description,
-  );
+  const [descriptionInfo, setDescriptionInfo] = useState<Description>({
+    title: "",
+  } as Description);
 
   // State hold data from excel file
   const [screens, setScreen] = useState<Screen[]>([]);
@@ -56,7 +56,7 @@ const Home = () => {
   return (
     <div className="App flex h-screen min-h-screen flex-col">
       <div className="absolute flex h-12 w-full items-center bg-dark p-2">
-        <img src="logo.png" alt="" className="w-24" />
+        <img src="logo.png" alt="" className="h-8" />
       </div>
       <div className="flex min-h-screen pt-12">
         <Controller
